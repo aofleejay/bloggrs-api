@@ -1,0 +1,22 @@
+{
+  "name": "try-designing-rest-api",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node lib/server.js",
+    "build": "babel src -d lib",
+    "dev": "nodemon --exec babel-node src/server.js"
+  },
+  "repository": "https://github.com/aofleejay/try-designing-rest-api.git",
+  "author": "aofleejay <aofleejay@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.16.2"
+  },
+  "devDependencies": {
+    "babel": "6.23.0",
+    "babel-cli": "6.26.0",
+    "babel-preset-env": "1.6.1",
+    "nodemon": "1.14.12"
+  }
+}
