@@ -3,13 +3,13 @@ import User from '../models/User'
 const getUsers = (req, res) => {
   User.find({})
     .then(users => res.json(users))
-    .catch(err => res.status(422).json({ message: err.message }))
+    .catch(err => res.unprocessableEntity(err.message))
 }
 
 const getUserById = (req, res) => {
   User.findById(req.params.id)
     .then(user => res.json(user))
-    .catch(err => res.status(422).json({ message: err.message }))
+    .catch(err => res.unprocessableEntity(err.message))
 }
 
 const createUser = (req, res) => {
@@ -17,7 +17,7 @@ const createUser = (req, res) => {
   const user = new User({ name, gender })
   user.save()
   .then(user => res.status(201).json(user))
-  .catch(err => res.status(422).json({ message: err.message }))
+  .catch(err => res.unprocessableEntity(err.message))
 }
 
 const updateUser = (req, res) => {
@@ -31,13 +31,13 @@ const updateUser = (req, res) => {
   }
   User.findByIdAndUpdate(req.params.id, updateFields, { new: true })
     .then(user => res.json(user))
-    .catch(err => res.status(422).json({ message: err.message }))
+    .catch(err => res.unprocessableEntity(err.message))
 }
 
 const deleteUser = (req, res) => {
   User.findByIdAndRemove(req.params.id)
     .then(() => res.status(204).send())
-    .catch(err => res.status(422).json({ message: err.message }))
+    .catch(err => res.unprocessableEntity(err.message))
 }
 
 export {
