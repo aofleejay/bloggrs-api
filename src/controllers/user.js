@@ -7,7 +7,9 @@ const getUsers = (req, res) => {
 }
 
 const getUserById = (req, res) => {
-  res.json({})
+  User.findOne({ _id: req.params.id })
+    .then(user => res.json(user))
+    .catch(err => res.status(422).json({ message: err.message }))
 }
 
 const createUser = (req, res) => {
