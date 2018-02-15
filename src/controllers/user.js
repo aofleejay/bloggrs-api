@@ -1,5 +1,9 @@
+import User from '../models/User'
+
 const getUsers = (req, res) => {
-  res.json({})
+  User.find({})
+    .then(users => res.json(users))
+    .catch(err => res.status(422).json({ message: err.message }))
 }
 
 const getUserById = (req, res) => {
