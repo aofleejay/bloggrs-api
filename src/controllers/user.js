@@ -35,7 +35,9 @@ const updateUser = (req, res) => {
 }
 
 const deleteUser = (req, res) => {
-  res.json({})
+  User.findByIdAndRemove(req.params.id)
+    .then(() => res.status(204).send())
+    .catch(err => res.status(422).json({ message: err.message }))
 }
 
 export {
