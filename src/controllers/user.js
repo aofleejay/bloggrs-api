@@ -7,7 +7,7 @@ const getUsers = (req, res) => {
 }
 
 const getUserById = (req, res) => {
-  User.findOne({ _id: req.params.id })
+  User.findById(req.params.id)
     .then(user => res.json(user))
     .catch(err => res.status(422).json({ message: err.message }))
 }
@@ -21,7 +21,17 @@ const createUser = (req, res) => {
 }
 
 const updateUser = (req, res) => {
-  res.json({})
+  const { name, gender } = req.body
+  const updateFields = {}
+  if (name) {
+    updateFields.name = name
+  }
+  if (gender) {
+    updateFields.gender = gender
+  }
+  User.findByIdAndUpdate(req.params.id, updateFields, { new: true })
+    .then(user => res.json(user))
+    .catch(err => res.status(422).json({ message: err.message }))
 }
 
 const deleteUser = (req, res) => {
