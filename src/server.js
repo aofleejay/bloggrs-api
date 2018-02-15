@@ -1,5 +1,11 @@
 import express from 'express'
+import mongoose from 'mongoose'
 import routes from './routes'
+
+mongoose.connect('mongodb://database/user')
+const db = mongoose.connection
+db.on('error', err => console.log(`Fail to connect database with error ${err}.`))
+db.once('open', () => console.log('Database connected.'))
 
 const app = express()
 
