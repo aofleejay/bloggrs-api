@@ -11,7 +11,11 @@ const getUserById = (req, res) => {
 }
 
 const createUser = (req, res) => {
-  res.json({})
+  const { name, gender } = req.body
+  const user = new User({ name, gender })
+  user.save()
+  .then(user => res.status(201).json(user))
+  .catch(err => res.status(422).json({ message: err.message }))
 }
 
 const updateUser = (req, res) => {

@@ -1,5 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import bodyParser from 'body-parser'
 import routes from './routes'
 
 mongoose.connect('mongodb://database/user')
@@ -9,6 +10,8 @@ db.once('open', () => console.log('Database connected.'))
 
 const app = express()
 
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 app.use(routes)
 
 app.listen(4000, () => console.log('Server started.'))
