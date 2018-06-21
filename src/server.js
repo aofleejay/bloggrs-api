@@ -1,7 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
-import responseEnhancer from 'expressjs-response'
+import responseEnhancer from 'express-response-formatter'
 import routes from './routes'
 
 mongoose.connect('mongodb://database/user')

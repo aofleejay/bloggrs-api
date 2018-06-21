@@ -668,7 +668,7 @@ bluebird@3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
 
-body-parser@1.18.2, body-parser@^1.18.2:
+body-parser@1.18.2:
   version "1.18.2"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.18.2.tgz#87678a19d84b47d859b83199bd59bce222b10454"
   dependencies:
@@ -1119,6 +1119,10 @@ expand-range@^1.8.1:
   dependencies:
     fill-range "^2.1.0"
 
+express-response-formatter@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/express-response-formatter/-/express-response-formatter-1.0.0.tgz#bf5103d139e4fcfd76894c87088e3d2a035f909e"
+
 express@4.16.2:
   version "4.16.2"
   resolved "https://registry.yarnpkg.com/express/-/express-4.16.2.tgz#e35c6dfe2d64b7dca0a5cd4f21781be3299e076c"
@@ -1153,10 +1157,6 @@ express@4.16.2:
     type-is "~1.6.15"
     utils-merge "1.0.1"
     vary "~1.1.2"
-
-expressjs-response@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/expressjs-response/-/expressjs-response-1.0.3.tgz#641a7097e232ef38c393453881062c3ee3310ac6"
 
 extend-shallow@^2.0.1:
   version "2.0.1"
