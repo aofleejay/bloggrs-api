@@ -1123,6 +1123,10 @@ express-response-formatter@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/express-response-formatter/-/express-response-formatter-1.0.0.tgz#bf5103d139e4fcfd76894c87088e3d2a035f909e"
 
+express-routes-versioning@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/express-routes-versioning/-/express-routes-versioning-1.0.1.tgz#e536807fdb30c4eb4976e56687ad061ebc6a0e42"
+
 express@4.16.2:
   version "4.16.2"
   resolved "https://registry.yarnpkg.com/express/-/express-4.16.2.tgz#e35c6dfe2d64b7dca0a5cd4f21781be3299e076c"
