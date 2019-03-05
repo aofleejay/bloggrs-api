@@ -4,7 +4,7 @@ import bodyParser from 'body-parser'
 import responseEnhancer from 'express-response-formatter'
 import routes from './routes'
 
-mongoose.connect('mongodb://database/user')
+mongoose.connect('mongodb://database/pleasedo')
 const db = mongoose.connection
 db.on('error', err => console.log(`Fail to connect database with error ${err}.`))
 db.once('open', () => console.log('Database connected.'))
