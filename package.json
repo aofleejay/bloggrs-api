@@ -1,5 +1,5 @@
 {
-  "name": "try-designing-rest-api",
+  "name": "try-restful-api-design",
   "version": "1.0.0",
   "main": "src/server.js",
   "scripts": {
@@ -7,7 +7,7 @@
     "build": "babel src -d lib",
     "develop": "nodemon --exec babel-node src/server.js"
   },
-  "repository": "https://github.com/aofleejay/try-designing-rest-api.git",
+  "repository": "https://github.com/aofleejay/try-restful-api-design.git",
   "author": "aofleejay <aofleejay@hotmail.com>",
   "license": "MIT",
   "dependencies": {

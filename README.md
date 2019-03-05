@@ -1,4 +1,4 @@
-# try-designing-rest-api
+# try-restful-api-design
 Repository for practice about RESTful API design.
 
 ## 🚀 Quick start
