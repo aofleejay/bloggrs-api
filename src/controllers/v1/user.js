@@ -1,7 +1,7 @@
-import User from '../models/User'
+import * as User from '../../models/User'
 
 const getUsers = (req, res) => {
-  User.find({})
+  User.find()
     .then(users => res.formatter.ok(users))
     .catch(err => res.formatter.unprocess(err.message))
 }
@@ -14,10 +14,9 @@ const getUserById = (req, res) => {
 
 const createUser = (req, res) => {
   const { name, gender } = req.body
-  const user = new User({ name, gender })
-  user.save()
-  .then(user => res.formatter.created(user))
-  .catch(err => res.formatter.unprocess(err.message))
+  User.create({ name, gender })
+    .then(user => res.formatter.created(user))
+    .catch(err => res.formatter.unprocess(err.message))
 }
 
 const updateUser = (req, res) => {
@@ -29,13 +28,13 @@ const updateUser = (req, res) => {
   if (gender) {
     updateFields.gender = gender
   }
-  User.findByIdAndUpdate(req.params.id, updateFields, { new: true })
+  User.update(req.params.id, updateFields)
     .then(user => res.formatter.ok(user))
     .catch(err => res.formatter.unprocess(err.message))
 }
 
 const deleteUser = (req, res) => {
-  User.findByIdAndRemove(req.params.id)
+  User.remove(req.params.id)
     .then(() => res.formatter.noContent())
     .catch(err => res.formatter.unprocess(err.message))
 }
