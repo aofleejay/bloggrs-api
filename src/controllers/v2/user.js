@@ -1,13 +1,19 @@
 import * as User from '../../models/User'
 
+/**
+ * **Format user for v2.**
+ * - Split 'name' into 'firstname' and 'lastname'.
+ */
+const formattingUser = (user) => {
+  const [firstname, lastname] = user.name.split()
+  return {...user.toObject(), firstname, lastname, name: undefined }
+}
+
 const getUsers = (req, res) => {
   User.find()
     .then(users => {
-      const a = users.map((user) => {
-        const [firstname, lastname] = user.name.split(" ")
-        return {...user.toObject(), firstname, lastname, name: undefined }
-      })
-      res.formatter.ok(a)
+      const formattedUsers = users.map(formattingUser)
+      res.formatter.ok(formattedUsers)
     })
     .catch(err => res.formatter.unprocess(err.message))
 }
@@ -22,10 +28,7 @@ const createUser = (req, res) => {
   const { firstname, lastname, gender } = req.body
   const name = `${firstname} ${lastname}`
   User.create({ name, gender })
-    .then(user => {
-      const [firstname, lastname] = user.name.split(" ")
-      res.formatter.created({...user.toObject(), firstname, lastname, name: undefined })
-    })
+    .then(user => res.formatter.created(formattingUser(user)))
     .catch(err => res.formatter.unprocess(err.message))
 }
 
@@ -39,10 +42,7 @@ const updateUser = (req, res) => {
     updateFields.gender = gender
   }
   User.update(req.params.id, updateFields)
-    .then((user) => {
-      const [firstname, lastname] = user.name.split(" ")
-      res.formatter.ok({...user.toObject(), firstname, lastname, name: undefined })
-    })
+    .then(user => res.formatter.ok(formattingUser(user)))
     .catch(err => res.formatter.unprocess(err.message))
 }
 
