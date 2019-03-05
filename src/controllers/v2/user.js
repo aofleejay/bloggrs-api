@@ -5,7 +5,7 @@ import * as User from '../../models/User'
  * - Split 'name' into 'firstname' and 'lastname'.
  */
 const formattingUser = (user) => {
-  const [firstname, lastname] = user.name.split()
+  const [firstname, lastname] = user.name.split(" ")
   return {...user.toObject(), firstname, lastname, name: undefined }
 }
 
