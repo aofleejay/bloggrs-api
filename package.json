@@ -8,7 +8,7 @@
     "develop": "nodemon --exec babel-node src/server.js"
   },
   "repository": "https://github.com/aofleejay/try-restful-api-design.git",
-  "author": "aofleejay <aofleejay@hotmail.com>",
+  "author": "aofleejay",
   "license": "MIT",
   "dependencies": {
     "body-parser": "1.18.3",
