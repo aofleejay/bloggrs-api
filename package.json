@@ -1,5 +1,5 @@
 {
-  "name": "try-restful-api-design",
+  "name": "bloggrs-api",
   "version": "1.0.0",
   "main": "src/server.js",
   "scripts": {
@@ -7,7 +7,7 @@
     "build": "babel src -d dist",
     "develop": "nodemon --exec babel-node src/server.js"
   },
-  "repository": "https://github.com/aofleejay/try-restful-api-design.git",
+  "repository": "https://github.com/aofleejay/bloggrs-api.git",
   "author": "aofleejay",
   "license": "MIT",
   "dependencies": {

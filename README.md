@@ -1,4 +1,4 @@
-# try-restful-api-design
+# Bloggrs API
 
 Repository for practice about RESTful API design.
 
@@ -13,6 +13,6 @@ Repository for practice about RESTful API design.
 
 - **Run production web service locally**
   ```
-  docker build -t aofleejay/try-restful-api-design:1.0.0 .
-  docker run -p 4000:4000 aofleejay/try-restful-api-design:1.0.0
+  docker build -t bloggrs-api:1.0.0 .
+  docker run -p 4000:4000 bloggrs-api:1.0.0
   ```
