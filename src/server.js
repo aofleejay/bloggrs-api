@@ -1,19 +1,22 @@
 import express from 'express'
-import mongoose from 'mongoose'
+import { MongoClient } from 'mongodb'
 import bodyParser from 'body-parser'
-import responseEnhancer from 'express-response-formatter'
-import routes from './routes'
 
-mongoose.connect('mongodb://database/pleasedo')
-const db = mongoose.connection
-db.on('error', err => console.log(`Fail to connect database with error ${err}.`))
-db.once('open', () => console.log('Database connected.'))
+// import routes from './routes'
 
-const app = express()
+const client = new MongoClient(process.env.DATABASE_CONNECTION)
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
-app.use(responseEnhancer())
-app.use(routes)
+client.connect((error) => {
+  if (error) {
+    console.error(`Cannot connect to ${url}`, error)
+  } else {
+    console.log('Connected successfully to database.')
+    const app = express()
 
-app.listen(4000, () => console.log('Server started.'))
+    app.use(bodyParser.urlencoded({ extended: false }))
+    app.use(bodyParser.json())
+    // app.use(routes)
+
+    app.listen(4000, () => console.log('Server started.'))
+  }
+})
