@@ -1,22 +1,31 @@
 import express from 'express'
-import { MongoClient } from 'mongodb'
 import bodyParser from 'body-parser'
 
-// import routes from './routes'
+import * as database from './database'
+import routes from './routes'
 
-const client = new MongoClient(process.env.DATABASE_CONNECTION)
+const main = async () => {
+  try {
+    await database.connect()
+    console.log('Database connected.')
 
-client.connect((error) => {
-  if (error) {
-    console.error(`Cannot connect to ${url}`, error)
-  } else {
-    console.log('Connected successfully to database.')
-    const app = express()
+    try {
+      const app = express()
 
-    app.use(bodyParser.urlencoded({ extended: false }))
-    app.use(bodyParser.json())
-    // app.use(routes)
+      app.use(bodyParser.urlencoded({ extended: false }))
+      app.use(bodyParser.json())
 
-    app.listen(4000, () => console.log('Server started.'))
+      app.use(routes)
+
+      app.listen(4000, () => {
+        console.log('Server started.')
+      })
+    } catch (error) {
+      console.error('Cannot start server.', error)
+    }
+  } catch (error) {
+    console.error('Cannot connect to database.', error)
   }
-})
+}
+
+main()
