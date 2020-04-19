@@ -7,7 +7,9 @@
     "build": "babel src -d dist",
     "develop": "nodemon --exec babel-node src/server.js",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|md)\"",
-    "lint": "eslint --ignore-path .gitignore --ext .js ."
+    "lint": "eslint --ignore-path .gitignore --ext .js .",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": "https://github.com/aofleejay/bloggrs-api.git",
   "author": "aofleejay",
@@ -25,6 +27,7 @@
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "husky": "^4.2.5",
+    "jest": "^25.3.0",
     "nodemon": "^2.0.3",
     "prettier": "^2.0.4",
     "pretty-quick": "^2.0.1"
