@@ -2,9 +2,9 @@ import express from 'express'
 import bodyParser from 'body-parser'
 
 import * as database from './database'
-import routes from './routes'
+import { getRouter } from './router'
 
-const main = async () => {
+const startServer = async ({ port = process.env.NODE_PORT } = {}) => {
   try {
     await database.connect()
     console.log('Database connected.')
@@ -15,10 +15,11 @@ const main = async () => {
       app.use(bodyParser.urlencoded({ extended: false }))
       app.use(bodyParser.json())
 
-      app.use(routes)
+      const router = getRouter()
+      app.use('/api', router)
 
-      app.listen(4000, () => {
-        console.log('Server started.')
+      const server = app.listen(port, () => {
+        console.log(`Listening on port ${server.address().port}.`)
       })
     } catch (error) {
       console.error('Cannot start server.', error)
@@ -28,4 +29,4 @@ const main = async () => {
   }
 }
 
-main()
+startServer()

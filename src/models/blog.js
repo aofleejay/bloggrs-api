@@ -12,8 +12,8 @@ const blogSchema = new Schema(
 
 const blogModel = model('blogs', blogSchema)
 
-const find = () => {
+const get = () => {
   return blogModel.find().lean()
 }
 
-export { find }
+export { get }

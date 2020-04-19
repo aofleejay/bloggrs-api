@@ -2,7 +2,7 @@ import * as blogModel from '../models/blog'
 
 const get = async (req, res) => {
   try {
-    const blogs = await blogModel.find()
+    const blogs = await blogModel.get()
 
     res.json({ data: blogs })
   } catch (error) {

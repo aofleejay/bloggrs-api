@@ -10,11 +10,11 @@ it('function get should return blogs', async () => {
     json: jest.fn(() => res).mockName('json'),
   }
   const blogs = []
-  blogModel.find.mockResolvedValueOnce(blogs)
+  blogModel.get.mockResolvedValueOnce(blogs)
 
   await blogController.get(req, res)
 
-  expect(blogModel.find).toHaveBeenCalledTimes(1)
+  expect(blogModel.get).toHaveBeenCalledTimes(1)
   expect(res.json).toHaveBeenCalledWith({ data: blogs })
   expect(res.json).toHaveBeenCalledTimes(1)
 })
