@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "node dist/server.js",
     "build": "babel src -d dist",
-    "develop": "nodemon --exec babel-node src/server.js"
+    "develop": "nodemon --exec babel-node src/server.js",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|md)\""
   },
   "repository": "https://github.com/aofleejay/bloggrs-api.git",
   "author": "aofleejay",
@@ -20,6 +21,9 @@
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.5",
-    "nodemon": "^2.0.3"
+    "husky": "^4.2.5",
+    "nodemon": "^2.0.3",
+    "prettier": "^2.0.4",
+    "pretty-quick": "^2.0.1"
   }
 }
