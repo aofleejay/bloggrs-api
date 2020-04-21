@@ -1,3 +1,5 @@
+import faker from 'faker'
+
 const buildReq = (overrides = {}) => {
   const req = {
     params: {},
@@ -20,4 +22,14 @@ const buildRes = (overrides = {}) => {
   return res
 }
 
-export { buildReq, buildRes }
+const buildBlog = (overrides = {}) => {
+  const blog = {
+    id: faker.random.uuid(),
+    content: faker.lorem.paragraphs(3),
+    ...overrides,
+  }
+
+  return blog
+}
+
+export { buildReq, buildRes, buildBlog }

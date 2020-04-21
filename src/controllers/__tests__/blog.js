@@ -1,6 +1,6 @@
 import * as blogController from '../blog'
 import * as blogModel from '../../models/blog'
-import { buildReq, buildRes } from '../../test-utils'
+import { buildReq, buildRes, buildBlog } from '../../test-utils'
 
 jest.mock('../../models/blog')
 
@@ -24,7 +24,7 @@ it('function get should return blogs', async () => {
 it('function getById should return a blog when blog found', async () => {
   const req = buildReq({ params: { id: '1' } })
   const res = buildRes()
-  const blog = { content: 'Lorem ipsum.' }
+  const blog = buildBlog()
   blogModel.getById.mockResolvedValueOnce(blog)
 
   await blogController.getById(req, res)
@@ -62,7 +62,7 @@ it('function getById should return 404 when blog not found', async () => {
 it('function create should return 201 when create blog success', async () => {
   const req = buildReq({ body: { content: 'Lorem ipsum' } })
   const res = buildRes()
-  const createdBlog = { id: '1', content: 'Lorem ipsum' }
+  const createdBlog = buildBlog()
   blogModel.create.mockResolvedValueOnce(createdBlog)
 
   await blogController.create(req, res)
@@ -81,7 +81,7 @@ it('function update should return updated blog when update success', async () =>
     body: { content: 'Lorem ipsum' },
   })
   const res = buildRes()
-  const updatedBlog = { id: '1', content: 'Lorem ipsum' }
+  const updatedBlog = buildBlog({ id: '1', content: 'Lorem ipsum' })
   blogModel.update.mockResolvedValueOnce(updatedBlog)
 
   await blogController.update(req, res)
