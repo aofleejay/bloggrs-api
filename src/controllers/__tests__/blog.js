@@ -1,5 +1,6 @@
 import * as blogController from '../blog'
 import * as blogModel from '../../models/blog'
+import { buildReq, buildRes } from '../../test-utils'
 
 jest.mock('../../models/blog')
 
@@ -8,11 +9,8 @@ afterEach(() => {
 })
 
 it('function get should return blogs', async () => {
-  const req = {}
-  const res = {
-    status: jest.fn(() => res).mockName('status'),
-    json: jest.fn(() => res).mockName('json'),
-  }
+  const req = buildReq()
+  const res = buildRes()
   const blogs = []
   blogModel.get.mockResolvedValueOnce(blogs)
 
@@ -24,11 +22,8 @@ it('function get should return blogs', async () => {
 })
 
 it('function getById should return a blog when blog found', async () => {
-  const req = { params: { id: '1' } }
-  const res = {
-    status: jest.fn(() => res).mockName('status'),
-    json: jest.fn(() => res).mockName('json'),
-  }
+  const req = buildReq({ params: { id: '1' } })
+  const res = buildRes()
   const blog = { content: 'Lorem ipsum.' }
   blogModel.getById.mockResolvedValueOnce(blog)
 
@@ -41,11 +36,8 @@ it('function getById should return a blog when blog found', async () => {
 })
 
 it('function getById should return 404 when blog not found', async () => {
-  const req = { params: { id: '1' } }
-  const res = {
-    status: jest.fn(() => res).mockName('status'),
-    json: jest.fn(() => res).mockName('json'),
-  }
+  const req = buildReq({ params: { id: '1' } })
+  const res = buildRes()
   blogModel.getById.mockResolvedValueOnce(null)
 
   await blogController.getById(req, res)
@@ -68,11 +60,8 @@ it('function getById should return 404 when blog not found', async () => {
 })
 
 it('function create should return 201 when create blog success', async () => {
-  const req = { body: { content: 'Lorem ipsum' } }
-  const res = {
-    status: jest.fn(() => res).mockName('status'),
-    json: jest.fn(() => res).mockName('json'),
-  }
+  const req = buildReq({ body: { content: 'Lorem ipsum' } })
+  const res = buildRes()
   const createdBlog = { id: '1', content: 'Lorem ipsum' }
   blogModel.create.mockResolvedValueOnce(createdBlog)
 
@@ -87,14 +76,11 @@ it('function create should return 201 when create blog success', async () => {
 })
 
 it('function update should return updated blog when update success', async () => {
-  const req = {
+  const req = buildReq({
     params: { id: '1' },
     body: { content: 'Lorem ipsum' },
-  }
-  const res = {
-    status: jest.fn(() => res).mockName('status'),
-    json: jest.fn(() => res).mockName('json'),
-  }
+  })
+  const res = buildRes()
   const updatedBlog = { id: '1', content: 'Lorem ipsum' }
   blogModel.update.mockResolvedValueOnce(updatedBlog)
 
@@ -109,12 +95,8 @@ it('function update should return updated blog when update success', async () =>
 })
 
 it('function remove should return 204 when delete blog success', async () => {
-  const req = { params: { id: '1' } }
-  const res = {
-    status: jest.fn(() => res).mockName('status'),
-    json: jest.fn(() => res).mockName('json'),
-    send: jest.fn(() => res).mockName('send'),
-  }
+  const req = buildReq({ params: { id: '1' } })
+  const res = buildRes()
   blogModel.remove.mockResolvedValueOnce()
 
   await blogController.remove(req, res)
